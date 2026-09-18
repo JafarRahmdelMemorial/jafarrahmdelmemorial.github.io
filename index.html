@@ -147,6 +147,216 @@
   font-family: 'Vazirmatn', sans-serif;
   font-size: 14px;
 }
+
+/* =========================
+   صفحه ۲ - دست‌خط
+========================= */
+
+.page-two {
+  width: 100%;
+  min-height: 100vh;
+  padding: 90px 20px 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-top: 1px solid #292929;
+  position: relative;
+}
+
+/* شماره 02 */
+
+.page-two::before {
+  content: "02";
+
+  position: absolute;
+  top: 28px;
+  left: 28px;
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+
+  color: #555555;
+}
+
+/* عنوان */
+
+.page-two-title {
+  font-family: 'Noto Nastaliq Urdu', serif;
+
+  font-size: 27px;
+  line-height: 2;
+
+  color: #eeeeee;
+
+  margin-bottom: 6px;
+}
+
+/* عنوان انگلیسی */
+
+.page-two-subtitle {
+  direction: ltr;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 13px;
+  letter-spacing: 3px;
+
+  color: #777777;
+
+  margin-bottom: 35px;
+}
+
+/* =========================
+   عکس + فلش‌ها
+========================= */
+
+.handwriting-viewer {
+  width: 100%;
+  max-width: 760px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+}
+
+/* قاب عکس */
+
+.handwriting-frame {
+  width: 100%;
+  max-width: 620px;
+
+  padding: 6px;
+
+  background: #111111;
+
+  border: 1px solid #4a4a4a;
+
+  border-radius: 2px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* خود عکس */
+
+.handwriting-frame img {
+  width: 100%;
+  height: auto;
+
+  max-height: 78vh;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+/* =========================
+   فلش‌ها
+========================= */
+
+.handwriting-btn {
+  flex: 0 0 auto;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid #3c3c3c;
+
+  background: transparent;
+
+  color: #cccccc;
+
+  font-family: Arial, sans-serif;
+  font-size: 34px;
+  line-height: 35px;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  transition: 0.25s ease;
+}
+
+.handwriting-btn:hover {
+  background: #eeeeee;
+
+  color: #111111;
+
+  border-color: #eeeeee;
+}
+
+/* =========================
+   شماره صفحه
+========================= */
+
+.page-number {
+  margin-top: 20px;
+
+  direction: ltr;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 16px;
+
+  letter-spacing: 2px;
+
+  color: #888888;
+}
+
+/* =========================
+   موبایل
+========================= */
+
+@media (max-width: 600px) {
+
+  .page-two {
+    padding: 75px 14px 55px;
+  }
+
+  .page-two::before {
+    top: 22px;
+    left: 18px;
+  }
+
+  .page-two-title {
+    font-size: 24px;
+  }
+
+  .page-two-subtitle {
+    font-size: 11px;
+
+    margin-bottom: 28px;
+  }
+
+  .handwriting-viewer {
+    gap: 8px;
+  }
+
+  .handwriting-frame {
+    padding: 4px;
+  }
+
+  .handwriting-btn {
+    width: 34px;
+    height: 34px;
+
+    font-size: 27px;
+    line-height: 28px;
+  }
+
+  .page-number {
+    margin-top: 16px;
+
+    font-size: 15px;
+  }
+
+
   </style></head><body>  <main class="page"><div class="forever">Forever in our hearts</div>
 
 <div class="symbols">🕊️🖤</div>
@@ -171,17 +381,57 @@
 
   <div class="page-two-title">دست‌خط او</div>
 
-  <div class="handwriting">
-    <iframe
-      src="DOC-20260825-WA0005.pdf"
-      title="دست‌خط جعفر رحم دل">
-    </iframe>
+  <div class="page-two-subtitle">HIS HANDWRITING</div>
+
+  <div class="handwriting-viewer">
+
+    <button class="handwriting-btn" onclick="previousPage()">‹</button>
+
+    <div class="handwriting-frame">
+      <img
+        id="handwritingImage"
+        src="handwriting/page1.jpg"
+        alt="دست‌خط جعفر رحم دل"
+      >
+    </div>
+
+    <button class="handwriting-btn" onclick="nextPage()">›</button>
+
   </div>
 
-  <a class="back-button" href="#top">بازگشت</a>
+  <div class="page-number">
+    <span id="currentPage">1</span> / 20
+  </div>
 
 </section>
-  
+
+    <script>
+  let currentPage = 1;
+  const totalPages = 20;
+
+  function showPage() {
+    const image = document.getElementById("handwritingImage");
+    const pageNumber = document.getElementById("currentPage");
+
+    image.src = "handwriting/page" + currentPage + ".jpg";
+    pageNumber.textContent = currentPage;
+  }
+
+  function nextPage() {
+    if (currentPage < totalPages) {
+      currentPage++;
+      showPage();
+    }
+  }
+
+  function previousPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage();
+    }
+  }
+  </script>
+    
   </body>
 </html>
     
