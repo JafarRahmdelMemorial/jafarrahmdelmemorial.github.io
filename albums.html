@@ -1,1 +1,658 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>خاطرات | جعفر رحم‌دل</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500&family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #111;
+      color: #f5f5f5;
+      font-family: "Vazirmatn", sans-serif;
+    }
+
+    /* عنوان صفحه */
+
+    .page-header {
+      text-align: center;
+      padding: 65px 20px 40px;
+    }
+
+    .page-title {
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 34px;
+      margin-bottom: 5px;
+    }
+
+    .page-subtitle {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      letter-spacing: 4px;
+      color: #aaa;
+    }
+
+
+    /* شبکه آلبوم‌ها */
+
+    .albums-container {
+      width: min(900px, 92%);
+      margin: auto;
+      padding-bottom: 70px;
+    }
+
+    .albums-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+
+    /* کارت آلبوم */
+
+    .album-card {
+      background: #191919;
+      border: 1px solid #292929;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease,
+                  background 0.3s ease;
+    }
+
+    .album-card:hover {
+      transform: translateY(-4px);
+      background: #202020;
+    }
+
+
+    /* عکس جلد */
+
+    .album-cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background: #242424;
+    }
+
+
+    /* اسم آلبوم */
+
+    .album-name {
+      text-align: center;
+      padding: 16px 8px 19px;
+      font-size: 15px;
+    }
+
+
+    /* -----------------------------
+       صفحه داخل آلبوم
+    ----------------------------- */
+
+    .album-page {
+      display: none;
+      width: min(900px, 92%);
+      margin: auto;
+      padding-bottom: 70px;
+    }
+
+
+    .back-button {
+      background: transparent;
+      border: none;
+      color: #ddd;
+      font-family: "Vazirmatn", sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+
+    .album-title {
+      text-align: center;
+      font-family: "Noto Nastaliq Urdu", serif;
+      font-size: 31px;
+      margin-bottom: 30px;
+    }
+
+
+    /* گالری عکس‌ها */
+
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+
+    .photo-card {
+      text-align: center;
+    }
+
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+
+    .photo-card img:hover {
+      transform: scale(1.015);
+    }
+
+
+    .photo-caption {
+      margin-top: 10px;
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+
+    /* -----------------------------
+       نمایش بزرگ عکس
+    ----------------------------- */
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.94);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+
+    .lightbox img {
+      max-width: 92%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 25px;
+      width: 90%;
+      text-align: center;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+
+    /* -----------------------------
+       موبایل
+    ----------------------------- */
+
+    @media (max-width: 600px) {
+
+      .page-header {
+        padding-top: 48px;
+      }
+
+      .page-title {
+        font-size: 30px;
+      }
+
+      .albums-grid,
+      .photos-grid {
+        gap: 13px;
+      }
+
+      .album-name {
+        font-size: 13px;
+      }
+
+      .photo-caption {
+        font-size: 12px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     صفحه اصلی آلبوم‌ها
+================================= -->
+
+<section id="albumsHome">
+
+  <header class="page-header">
+
+    <div class="page-title">
+      آلبوم خاطرات
+    </div>
+
+    <div class="page-subtitle">
+      MEMORIES
+    </div>
+
+  </header>
+
+
+  <main class="albums-container">
+
+    <div class="albums-grid">
+
+
+      <!-- آلبوم ۱ -->
+
+      <div class="album-card"
+           onclick="openAlbum('youth')">
+
+        <img
+          class="album-cover"
+          src="Albums/youth/cover.jpg"
+          alt="نوجوانی و جوانی">
+
+        <div class="album-name">
+          نوجوانی و جوانی
+        </div>
+
+      </div>
+
+
+      <!-- آلبوم ۲ -->
+
+      <div class="album-card"
+           onclick="openAlbum('lovelyDays')">
+
+        <img
+          class="album-cover"
+          src="Albums/lovely-days/cover.jpg"
+          alt="روزهای دوست داشتنی">
+
+        <div class="album-name">
+          روزهای دوست داشتنی
+        </div>
+
+      </div>
+
+
+      <!-- آلبوم ۳ -->
+
+      <div class="album-card"
+           onclick="openAlbum('lovedOnes')">
+
+        <img
+          class="album-cover"
+          src="Albums/loved-ones/cover.jpg"
+          alt="او و عزیزانش">
+
+        <div class="album-name">
+          او و عزیزانش
+        </div>
+
+      </div>
+
+
+      <!-- آلبوم ۴ -->
+
+      <div class="album-card"
+           onclick="openAlbum('travels')">
+
+        <img
+          class="album-cover"
+          src="Albums/travels/cover.jpg"
+          alt="سفرها">
+
+        <div class="album-name">
+          سفرها
+        </div>
+
+      </div>
+
+
+      <!-- آلبوم ۵ -->
+
+      <div class="album-card"
+           onclick="openAlbum('memorableFrames')">
+
+        <img
+          class="album-cover"
+          src="Albums/memorable-frames/cover.jpg"
+          alt="قاب‌های ماندگار">
+
+        <div class="album-name">
+          قاب‌های ماندگار
+        </div>
+
+      </div>
+
+
+      <!-- آلبوم ۶ -->
+
+      <div class="album-card"
+           onclick="openAlbum('videos')">
+
+        <div class="album-cover"
+             style="display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    font-size:48px;">
+
+          🎥
+
+        </div>
+
+        <div class="album-name">
+          ویدیوها
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+</section>
+
+
+
+<!-- =================================
+     صفحه داخل آلبوم
+================================= -->
+
+<section id="albumPage"
+         class="album-page">
+
+  <button class="back-button"
+          onclick="backToAlbums()">
+
+    ← بازگشت به آلبوم‌ها
+
+  </button>
+
+
+  <div id="albumTitle"
+       class="album-title">
+  </div>
+
+
+  <div id="photosGrid"
+       class="photos-grid">
+  </div>
+
+</section>
+
+
+
+<!-- =================================
+     نمایش بزرگ عکس
+================================= -->
+
+<div id="lightbox"
+     class="lightbox"
+     onclick="closeLightbox()">
+
+  <span class="close-lightbox">
+    ×
+  </span>
+
+  <img id="lightboxImage"
+       src=""
+       alt="">
+
+  <div id="lightboxCaption"
+       class="lightbox-caption">
+  </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================
+   اطلاعات آلبوم‌ها
+===================================== */
+
+const albums = {
+
+
+  youth: {
+
+    title: "نوجوانی و جوانی",
+
+    photos: []
+
+  },
+
+
+  lovelyDays: {
+
+    title: "روزهای دوست داشتنی",
+
+    photos: []
+
+  },
+
+
+  lovedOnes: {
+
+    title: "او و عزیزانش",
+
+    photos: []
+
+  },
+
+
+  travels: {
+
+    title: "سفرها",
+
+    photos: []
+
+  },
+
+
+  memorableFrames: {
+
+    title: "قاب‌های ماندگار",
+
+    photos: []
+
+  },
+
+
+  videos: {
+
+    title: "ویدیوها",
+
+    photos: []
+
+  }
+
+};
+
+
+
+/* =====================================
+   باز کردن آلبوم
+===================================== */
+
+function openAlbum(albumId) {
+
+  const album = albums[albumId];
+
+  document.getElementById("albumsHome").style.display =
+    "none";
+
+  document.getElementById("albumPage").style.display =
+    "block";
+
+
+  document.getElementById("albumTitle").textContent =
+    album.title;
+
+
+  const photosGrid =
+    document.getElementById("photosGrid");
+
+  photosGrid.innerHTML = "";
+
+
+  if (album.photos.length === 0) {
+
+    photosGrid.innerHTML = `
+      <div style="
+        grid-column: 1 / -1;
+        text-align: center;
+        color: #888;
+        padding: 50px 20px;
+      ">
+        هنوز خاطره‌ای به این آلبوم اضافه نشده
+      </div>
+    `;
+
+  }
+
+
+  album.photos.forEach(photo => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "photo-card";
+
+
+    const image =
+      document.createElement("img");
+
+    image.src =
+      photo.image;
+
+    image.alt =
+      photo.caption;
+
+
+    image.onclick = function() {
+
+      openLightbox(
+        photo.image,
+        photo.caption
+      );
+
+    };
+
+
+    const caption =
+      document.createElement("div");
+
+    caption.className =
+      "photo-caption";
+
+    caption.textContent =
+      photo.caption;
+
+
+    card.appendChild(image);
+
+    card.appendChild(caption);
+
+    photosGrid.appendChild(card);
+
+  });
+
+
+  window.scrollTo(0, 0);
+
+}
+
+
+
+/* =====================================
+   برگشت به صفحه آلبوم‌ها
+===================================== */
+
+function backToAlbums() {
+
+  document.getElementById("albumPage").style.display =
+    "none";
+
+  document.getElementById("albumsHome").style.display =
+    "block";
+
+  window.scrollTo(0, 0);
+
+}
+
+
+
+/* =====================================
+   باز کردن عکس
+===================================== */
+
+function openLightbox(image, caption) {
+
+  document.getElementById("lightboxImage").src =
+    image;
+
+  document.getElementById("lightboxCaption").textContent =
+    caption;
+
+  document.getElementById("lightbox").style.display =
+    "flex";
+
+}
+
+
+
+/* =====================================
+   بستن عکس
+===================================== */
+
+function closeLightbox() {
+
+  document.getElementById("lightbox").style.display =
+    "none";
+
+}
+
+
+</script>
+
+</body>
+
+</html>
