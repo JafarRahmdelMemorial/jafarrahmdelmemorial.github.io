@@ -150,13 +150,26 @@
 <script>
 document.querySelectorAll(".gallery img").forEach(function(img) {
   img.onclick = function() {
-    document.getElementById("lightboxImage").src = this.src;
-    document.getElementById("lightbox").style.display = "flex";
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+
+    lightboxImage.src = this.src;
+    lightbox.style.display = "flex";
+
+    setTimeout(function() {
+      lightbox.classList.add("show");
+    }, 10);
   };
 });
 
 function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
+  const lightbox = document.getElementById("lightbox");
+
+  lightbox.classList.remove("show");
+
+  setTimeout(function() {
+    lightbox.style.display = "none";
+  }, 350);
 }
 </script>
   
