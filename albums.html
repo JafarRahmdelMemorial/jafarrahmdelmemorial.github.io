@@ -5,10 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>خاطرات | جعفر رحم‌دل</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>آلبوم خاطرات | جعفر رحم‌دل</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500&family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -25,11 +22,9 @@
       font-family: "Vazirmatn", sans-serif;
     }
 
-    /* عنوان صفحه */
-
     .page-header {
       text-align: center;
-      padding: 65px 20px 40px;
+      padding: 55px 20px 35px;
     }
 
     .page-title {
@@ -42,77 +37,74 @@
       font-family: "Cormorant Garamond", serif;
       font-size: 17px;
       letter-spacing: 4px;
-      color: #aaa;
+      color: #999;
     }
 
-
-    /* شبکه آلبوم‌ها */
-
     .albums-container {
-      width: min(900px, 92%);
-      margin: auto;
-      padding-bottom: 70px;
+      width: 92%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 60px;
     }
 
     .albums-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      gap: 18px;
     }
 
-
-    /* کارت آلبوم */
-
     .album-card {
-      background: #191919;
+      background: #1a1a1a;
       border: 1px solid #292929;
-      border-radius: 16px;
+      border-radius: 15px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.3s ease,
-                  background 0.3s ease;
+      transition: 0.25s;
     }
 
     .album-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       background: #202020;
     }
-
-
-    /* عکس جلد */
 
     .album-cover {
       width: 100%;
       aspect-ratio: 1 / 1;
-      object-fit: cover;
-      display: block;
-      background: #242424;
+      background: #292929;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 45px;
+      color: #777;
+      overflow: hidden;
     }
 
-
-    /* اسم آلبوم */
+    .album-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     .album-name {
       text-align: center;
-      padding: 16px 8px 19px;
-      font-size: 15px;
+      padding: 14px 5px 17px;
+      font-size: 14px;
     }
 
+    /* صفحه داخل آلبوم */
 
-    /* -----------------------------
-       صفحه داخل آلبوم
-    ----------------------------- */
-
-    .album-page {
+    #albumPage {
       display: none;
-      width: min(900px, 92%);
-      margin: auto;
-      padding-bottom: 70px;
+      width: 92%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 60px;
     }
-
 
     .back-button {
-      background: transparent;
+      display: block;
+      background: none;
       border: none;
       color: #ddd;
       font-family: "Vazirmatn", sans-serif;
@@ -122,105 +114,68 @@
       margin-bottom: 20px;
     }
 
-
     .album-title {
       text-align: center;
       font-family: "Noto Nastaliq Urdu", serif;
-      font-size: 31px;
+      font-size: 30px;
       margin-bottom: 30px;
     }
-
-
-    /* گالری عکس‌ها */
 
     .photos-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      gap: 18px;
     }
 
-
-    .photo-card {
+    .empty-message {
+      grid-column: 1 / -1;
       text-align: center;
+      color: #777;
+      padding: 60px 20px;
     }
 
+    /* نمایش بزرگ عکس */
 
-    .photo-card img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 14px;
-      display: block;
-      cursor: pointer;
-      transition: transform 0.25s ease;
-    }
-
-
-    .photo-card img:hover {
-      transform: scale(1.015);
-    }
-
-
-    .photo-caption {
-      margin-top: 10px;
-      color: #ccc;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-
-    /* -----------------------------
-       نمایش بزرگ عکس
-    ----------------------------- */
-
-    .lightbox {
+    #lightbox {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: rgba(0,0,0,0.94);
+      background: rgba(0,0,0,0.95);
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
 
-
-    .lightbox img {
-      max-width: 92%;
+    #lightbox img {
+      max-width: 95%;
       max-height: 82vh;
       object-fit: contain;
       border-radius: 8px;
     }
 
-
-    .close-lightbox {
+    .close-button {
       position: absolute;
-      top: 20px;
-      right: 25px;
+      top: 15px;
+      right: 20px;
       color: white;
-      font-size: 35px;
+      font-size: 38px;
       cursor: pointer;
     }
 
-
     .lightbox-caption {
       position: absolute;
-      bottom: 25px;
+      bottom: 20px;
       width: 90%;
       text-align: center;
       color: #ddd;
       font-size: 14px;
     }
 
-
-    /* -----------------------------
-       موبایل
-    ----------------------------- */
-
     @media (max-width: 600px) {
 
       .page-header {
-        padding-top: 48px;
+        padding-top: 45px;
       }
 
       .page-title {
@@ -229,15 +184,11 @@
 
       .albums-grid,
       .photos-grid {
-        gap: 13px;
+        gap: 12px;
       }
 
       .album-name {
         font-size: 13px;
-      }
-
-      .photo-caption {
-        font-size: 12px;
       }
 
     }
@@ -249,9 +200,9 @@
 <body>
 
 
-<!-- =================================
+<!-- =========================
      صفحه اصلی آلبوم‌ها
-================================= -->
+========================= -->
 
 <section id="albumsHome">
 
@@ -273,15 +224,16 @@
     <div class="albums-grid">
 
 
-      <!-- آلبوم ۱ -->
+      <!-- ۱ -->
 
-      <div class="album-card"
-           onclick="openAlbum('youth')">
+      <div class="album-card" onclick="openAlbum('youth')">
 
-        <img
-          class="album-cover"
-          src="Albums/youth/cover.jpg"
-          alt="نوجوانی و جوانی">
+        <div class="album-cover">
+          <img
+            src="Albums/youth/cover.jpg"
+            alt="نوجوانی و جوانی"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
+        </div>
 
         <div class="album-name">
           نوجوانی و جوانی
@@ -290,15 +242,16 @@
       </div>
 
 
-      <!-- آلبوم ۲ -->
+      <!-- ۲ -->
 
-      <div class="album-card"
-           onclick="openAlbum('lovelyDays')">
+      <div class="album-card" onclick="openAlbum('lovelyDays')">
 
-        <img
-          class="album-cover"
-          src="Albums/lovely-days/cover.jpg"
-          alt="روزهای دوست داشتنی">
+        <div class="album-cover">
+          <img
+            src="Albums/lovely-days/cover.jpg"
+            alt="روزهای دوست داشتنی"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
+        </div>
 
         <div class="album-name">
           روزهای دوست داشتنی
@@ -307,15 +260,16 @@
       </div>
 
 
-      <!-- آلبوم ۳ -->
+      <!-- ۳ -->
 
-      <div class="album-card"
-           onclick="openAlbum('lovedOnes')">
+      <div class="album-card" onclick="openAlbum('lovedOnes')">
 
-        <img
-          class="album-cover"
-          src="Albums/loved-ones/cover.jpg"
-          alt="او و عزیزانش">
+        <div class="album-cover">
+          <img
+            src="Albums/loved-ones/cover.jpg"
+            alt="او و عزیزانش"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
+        </div>
 
         <div class="album-name">
           او و عزیزانش
@@ -324,15 +278,16 @@
       </div>
 
 
-      <!-- آلبوم ۴ -->
+      <!-- ۴ -->
 
-      <div class="album-card"
-           onclick="openAlbum('travels')">
+      <div class="album-card" onclick="openAlbum('travels')">
 
-        <img
-          class="album-cover"
-          src="Albums/travels/cover.jpg"
-          alt="سفرها">
+        <div class="album-cover">
+          <img
+            src="Albums/travels/cover.jpg"
+            alt="سفرها"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
+        </div>
 
         <div class="album-name">
           سفرها
@@ -341,15 +296,16 @@
       </div>
 
 
-      <!-- آلبوم ۵ -->
+      <!-- ۵ -->
 
-      <div class="album-card"
-           onclick="openAlbum('memorableFrames')">
+      <div class="album-card" onclick="openAlbum('memorableFrames')">
 
-        <img
-          class="album-cover"
-          src="Albums/memorable-frames/cover.jpg"
-          alt="قاب‌های ماندگار">
+        <div class="album-cover">
+          <img
+            src="Albums/memorable-frames/cover.jpg"
+            alt="قاب‌های ماندگار"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='📷';">
+        </div>
 
         <div class="album-name">
           قاب‌های ماندگار
@@ -358,19 +314,12 @@
       </div>
 
 
-      <!-- آلبوم ۶ -->
+      <!-- ۶ -->
 
-      <div class="album-card"
-           onclick="openAlbum('videos')">
+      <div class="album-card" onclick="openAlbum('videos')">
 
-        <div class="album-cover"
-             style="display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    font-size:48px;">
-
+        <div class="album-cover">
           🎥
-
         </div>
 
         <div class="album-name">
@@ -388,53 +337,37 @@
 
 
 
-<!-- =================================
-     صفحه داخل آلبوم
-================================= -->
+<!-- =========================
+     داخل آلبوم
+========================= -->
 
-<section id="albumPage"
-         class="album-page">
+<section id="albumPage">
 
-  <button class="back-button"
-          onclick="backToAlbums()">
-
+  <button class="back-button" onclick="backToAlbums()">
     ← بازگشت به آلبوم‌ها
-
   </button>
 
+  <div id="albumTitle" class="album-title"></div>
 
-  <div id="albumTitle"
-       class="album-title">
-  </div>
-
-
-  <div id="photosGrid"
-       class="photos-grid">
-  </div>
+  <div id="photosGrid" class="photos-grid"></div>
 
 </section>
 
 
 
-<!-- =================================
+<!-- =========================
      نمایش بزرگ عکس
-================================= -->
+========================= -->
 
-<div id="lightbox"
-     class="lightbox"
-     onclick="closeLightbox()">
+<div id="lightbox" onclick="closeLightbox()">
 
-  <span class="close-lightbox">
+  <span class="close-button">
     ×
   </span>
 
-  <img id="lightboxImage"
-       src=""
-       alt="">
+  <img id="lightboxImage" src="" alt="">
 
-  <div id="lightboxCaption"
-       class="lightbox-caption">
-  </div>
+  <div id="lightboxCaption" class="lightbox-caption"></div>
 
 </div>
 
@@ -442,217 +375,146 @@
 
 <script>
 
+  const albums = {
 
-/* =====================================
-   اطلاعات آلبوم‌ها
-===================================== */
+    youth: {
+      title: "نوجوانی و جوانی",
+      photos: []
+    },
 
-const albums = {
+    lovelyDays: {
+      title: "روزهای دوست داشتنی",
+      photos: []
+    },
 
+    lovedOnes: {
+      title: "او و عزیزانش",
+      photos: []
+    },
 
-  youth: {
+    travels: {
+      title: "سفرها",
+      photos: []
+    },
 
-    title: "نوجوانی و جوانی",
+    memorableFrames: {
+      title: "قاب‌های ماندگار",
+      photos: []
+    },
 
-    photos: []
+    videos: {
+      title: "ویدیوها",
+      photos: []
+    }
 
-  },
-
-
-  lovelyDays: {
-
-    title: "روزهای دوست داشتنی",
-
-    photos: []
-
-  },
-
-
-  lovedOnes: {
-
-    title: "او و عزیزانش",
-
-    photos: []
-
-  },
-
-
-  travels: {
-
-    title: "سفرها",
-
-    photos: []
-
-  },
+  };
 
 
-  memorableFrames: {
+  function openAlbum(id) {
 
-    title: "قاب‌های ماندگار",
+    const album = albums[id];
 
-    photos: []
+    document.getElementById("albumsHome").style.display = "none";
 
-  },
+    document.getElementById("albumPage").style.display = "block";
+
+    document.getElementById("albumTitle").textContent = album.title;
+
+    const grid = document.getElementById("photosGrid");
+
+    grid.innerHTML = "";
 
 
-  videos: {
+    if (album.photos.length === 0) {
 
-    title: "ویدیوها",
+      grid.innerHTML = `
+        <div class="empty-message">
+          هنوز خاطره‌ای به این آلبوم اضافه نشده
+        </div>
+      `;
 
-    photos: []
+      return;
+    }
+
+
+    album.photos.forEach(photo => {
+
+      const card = document.createElement("div");
+
+      const image = document.createElement("img");
+
+      image.src = photo.image;
+
+      image.alt = photo.caption;
+
+      image.style.width = "100%";
+
+      image.style.borderRadius = "14px";
+
+      image.style.cursor = "pointer";
+
+      image.onclick = function() {
+
+        openLightbox(
+          photo.image,
+          photo.caption
+        );
+
+      };
+
+
+      const caption = document.createElement("div");
+
+      caption.textContent = photo.caption;
+
+      caption.style.textAlign = "center";
+
+      caption.style.color = "#ccc";
+
+      caption.style.marginTop = "8px";
+
+
+      card.appendChild(image);
+
+      card.appendChild(caption);
+
+      grid.appendChild(card);
+
+    });
 
   }
 
-};
 
+  function backToAlbums() {
 
+    document.getElementById("albumPage").style.display = "none";
 
-/* =====================================
-   باز کردن آلبوم
-===================================== */
+    document.getElementById("albumsHome").style.display = "block";
 
-function openAlbum(albumId) {
-
-  const album = albums[albumId];
-
-  document.getElementById("albumsHome").style.display =
-    "none";
-
-  document.getElementById("albumPage").style.display =
-    "block";
-
-
-  document.getElementById("albumTitle").textContent =
-    album.title;
-
-
-  const photosGrid =
-    document.getElementById("photosGrid");
-
-  photosGrid.innerHTML = "";
-
-
-  if (album.photos.length === 0) {
-
-    photosGrid.innerHTML = `
-      <div style="
-        grid-column: 1 / -1;
-        text-align: center;
-        color: #888;
-        padding: 50px 20px;
-      ">
-        هنوز خاطره‌ای به این آلبوم اضافه نشده
-      </div>
-    `;
+    window.scrollTo(0, 0);
 
   }
 
 
-  album.photos.forEach(photo => {
+  function openLightbox(image, caption) {
 
-    const card =
-      document.createElement("div");
+    document.getElementById("lightboxImage").src = image;
 
-    card.className =
-      "photo-card";
+    document.getElementById("lightboxCaption").textContent = caption;
 
+    document.getElementById("lightbox").style.display = "flex";
 
-    const image =
-      document.createElement("img");
-
-    image.src =
-      photo.image;
-
-    image.alt =
-      photo.caption;
+  }
 
 
-    image.onclick = function() {
+  function closeLightbox() {
 
-      openLightbox(
-        photo.image,
-        photo.caption
-      );
+    document.getElementById("lightbox").style.display = "none";
 
-    };
-
-
-    const caption =
-      document.createElement("div");
-
-    caption.className =
-      "photo-caption";
-
-    caption.textContent =
-      photo.caption;
-
-
-    card.appendChild(image);
-
-    card.appendChild(caption);
-
-    photosGrid.appendChild(card);
-
-  });
-
-
-  window.scrollTo(0, 0);
-
-}
-
-
-
-/* =====================================
-   برگشت به صفحه آلبوم‌ها
-===================================== */
-
-function backToAlbums() {
-
-  document.getElementById("albumPage").style.display =
-    "none";
-
-  document.getElementById("albumsHome").style.display =
-    "block";
-
-  window.scrollTo(0, 0);
-
-}
-
-
-
-/* =====================================
-   باز کردن عکس
-===================================== */
-
-function openLightbox(image, caption) {
-
-  document.getElementById("lightboxImage").src =
-    image;
-
-  document.getElementById("lightboxCaption").textContent =
-    caption;
-
-  document.getElementById("lightbox").style.display =
-    "flex";
-
-}
-
-
-
-/* =====================================
-   بستن عکس
-===================================== */
-
-function closeLightbox() {
-
-  document.getElementById("lightbox").style.display =
-    "none";
-
-}
-
+  }
 
 </script>
 
-</body>
 
+</body>
 </html>
