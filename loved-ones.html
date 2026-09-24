@@ -1,1 +1,213 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>او و عزیزانش</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #111111;
+      color: #eeeeee;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .album-page {
+      padding: 50px 15px;
+    }
+
+    h1 {
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #eeeeee;
+      margin-bottom: 35px;
+    }
+
+    .gallery {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      cursor: pointer;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      backdrop-filter: blur(0px);
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      opacity: 0;
+      transform: scale(0.75);
+      transition: opacity 0.35s ease,
+                  transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 32px;
+      color: #eeeeee;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.show {
+      display: flex;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.show img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .lightbox.show .lightbox-close {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="album-page">
+
+    <h1>او و عزیزانش</h1>
+
+    <div class="gallery">
+
+      <img src="albums/loved-ones/IMG_20260924_141550_292.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141554_099.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141605_199.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141608_925.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141619_495.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141623_625.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141628_453.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141634_941.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141640_616.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141644_871.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141648_806.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141702_259.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141705_900.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141709_351.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141713_523.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141725_321.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141727_749.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141731_780.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141738_209.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141741_802.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141747_118.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141751_555.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141754_357.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141758_201.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141802_926.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141804_638.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141807_840.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141812_324.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141817_877.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141828_018.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141831_031.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141833_737.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141842_108.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141847_749.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141854_456.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141909_739.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141917_727.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141925_242.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141944_886.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141951_748.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_141955_845.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142009_460.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142026_871.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142029_095.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142034_355.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142054_726.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142135_516.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142140_665.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142209_743.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142217_578.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142222_455.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142224_467.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142231_105.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142236_073.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142237_666.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142240_295.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142248_339.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142253_652.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142258_443.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142302_420.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142307_815.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142311_960.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142313_592.jpg" alt="او و عزیزانش">
+      <img src="albums/loved-ones/IMG_20260924_142315_982.jpg" alt="او و عزیزانش">
+
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script>
+    document.querySelectorAll(".gallery img").forEach(function(img) {
+      img.onclick = function() {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+
+        lightboxImage.src = this.src;
+        lightbox.style.display = "flex";
+
+        setTimeout(function() {
+          lightbox.classList.add("show");
+        }, 10);
+      };
+    });
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+
+      lightbox.classList.remove("show");
+
+      setTimeout(function() {
+        lightbox.style.display = "none";
+      }, 350);
+    }
+  </script>
+
+</body>
+</html>
