@@ -107,22 +107,18 @@
   <img id="lightboxImage" src="" alt="">
 </div>
 
-  <script>
-  const galleryImages = document.querySelectorAll(".gallery img");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImage = document.getElementById("lightboxImage");
+<script>
+document.querySelectorAll(".gallery img").forEach(function(img) {
+  img.onclick = function() {
+    document.getElementById("lightboxImage").src = this.src;
+    document.getElementById("lightbox").style.display = "flex";
+  };
+});
 
-  galleryImages.forEach(function(image) {
-    image.addEventListener("click", function() {
-      lightboxImage.src = image.src;
-      lightbox.style.display = "flex";
-    });
-  });
-
-  function closeLightbox() {
-    lightbox.style.display = "none";
-  }
-  </script>
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
   
 </body>
 </html>
