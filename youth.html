@@ -101,6 +101,28 @@
 </div>
     
   </div>
+  
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">×</span>
+  <img id="lightboxImage" src="" alt="">
+</div>
 
+  <script>
+  const galleryImages = document.querySelectorAll(".gallery img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+
+  galleryImages.forEach(function(image) {
+    image.addEventListener("click", function() {
+      lightboxImage.src = image.src;
+      lightbox.style.display = "flex";
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.style.display = "none";
+  }
+  </script>
+  
 </body>
 </html>
