@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>سفرها</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #111111;
+      color: #eeeeee;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .album-page {
+      padding: 50px 15px;
+    }
+
+    h1 {
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #eeeeee;
+      margin-bottom: 35px;
+    }
+
+    .gallery {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      cursor: pointer;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+      backdrop-filter: blur(0px);
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      opacity: 0;
+      transform: scale(0.75);
+      transition: opacity 0.35s ease,
+                  transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 32px;
+      color: #eeeeee;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.show {
+      display: flex;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.show img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .lightbox.show .lightbox-close {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="album-page">
+
+    <h1>سفرها</h1>
+
+    <div class="gallery">
+
+      <img src="albums/travels/IMG_20260924_132933_447.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_132936_124.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_132938_539.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_132944_989.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_132946_009.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_132951_400.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_132952_581.jpg" alt="سفرها">
+
+      <img src="albums/travels/IMG_20260924_133000_760.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133027_478.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133030_839.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133036_590.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133038_901.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133045_205.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133052_029.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133053_416.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133057_165.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133106_135.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133108_360.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133110_509.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133112_572.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133115_397.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133118_496.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133121_242.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133125_806.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133139_028.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133140_418.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133142_925.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133144_527.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133147_258.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133158_390.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133248_225.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133250_751.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133254_323.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133300_581.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133314_755.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133327_822.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133331_575.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133334_421.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133339_485.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133342_133.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133344_958.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133350_255.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133353_283.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133359_425.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133402_570.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133404_226.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133407_590.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133410_585.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133411_641.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133414_296.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133418_403.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133422_324.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133426_729.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133429_586.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133434_759.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133438_814.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133440_965.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133442_524.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133446_161.jpg" alt="سفرها">
+      <img src="albums/travels/IMG_20260924_133448_695.jpg" alt="سفرها">
+
+    </div>
+
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script>
+    document.querySelectorAll(".gallery img").forEach(function(img) {
+      img.onclick = function() {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+
+        lightboxImage.src = this.src;
+        lightbox.style.display = "flex";
+
+        setTimeout(function() {
+          lightbox.classList.add("show");
+        }, 10);
+      };
+    });
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+
+      lightbox.classList.remove("show");
+
+      setTimeout(function() {
+        lightbox.style.display = "none";
+      }, 350);
+    }
+  </script>
+
+</body>
+</html>
